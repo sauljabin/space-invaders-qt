@@ -4,18 +4,18 @@
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui { class Game; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class Game : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    Game(int w, int h, QWidget *parent = nullptr);
+    ~Game();
 
 private:
-    Ui::MainWindow *ui;
+    Ui::Game *ui;
 };
 #endif // MAINWINDOW_H
