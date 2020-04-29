@@ -16,11 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    animatable/cannon.cpp \
     animatable/star.cpp \
     game.cpp \
     main.cpp
 
 HEADERS += \
+    animatable/cannon.h \
     animatable/star.h \
     game.h
 

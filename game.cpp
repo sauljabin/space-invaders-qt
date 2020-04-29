@@ -1,6 +1,7 @@
 #include "game.h"
 #include "animatable/star.h"
 #include "ui_game.h"
+#include <QRandomGenerator>
 #include <QtWidgets>
 
 Game::Game(int w, int h, QWidget* parent)
@@ -13,7 +14,10 @@ Game::Game(int w, int h, QWidget* parent)
     QGraphicsScene* scene = new QGraphicsScene(this);
 
     for (int i = 0; i < 100; i++) {
-        Star* sky = new Star(w, h);
+        int x = QRandomGenerator::global()->bounded(-w / 2, w / 2);
+        int y = QRandomGenerator::global()->bounded(-h / 2, h / 2);
+
+        Star* sky = new Star(x, y);
         scene->addItem(sky);
     }
 
