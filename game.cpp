@@ -1,8 +1,8 @@
 #include "game.h"
-#include "animatable/cannon.h"
-#include "animatable/star.h"
 #include "ui_game.h"
 #include <QtWidgets>
+
+#include <QDebug>
 
 Game::Game(int w, int h, QWidget* parent)
     : QMainWindow(parent)
@@ -18,7 +18,7 @@ Game::Game(int w, int h, QWidget* parent)
         scene->addItem(sky);
     }
 
-    Cannon* cannon = new Cannon(w, h);
+    cannon = new Cannon(w, h);
     scene->addItem(cannon);
 
     QGraphicsView* view = new QGraphicsView(scene, this);
@@ -29,10 +29,24 @@ Game::Game(int w, int h, QWidget* parent)
     view->show();
 
     setCentralWidget(view);
+    installEventFilter(this);
 
     QTimer* timer = new QTimer;
     QObject::connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
     timer->start(1000 / 30);
+    qInfo("Inicia aplicación");
 }
 
 Game::~Game() { delete ui; }
+
+bool Game::eventFilter(QObject*, QEvent* ev)
+{
+    if (ev->type() == QEvent::HoverMove) {
+        QMouseEvent* mouseEvent = (QMouseEvent*)ev;
+        if (mouseEvent->type() == QMouseEvent::HoverMove) {
+            int mCursorX = mouseEvent->x();
+            cannon->setMouseX(mCursorX);
+        }
+    }
+    return false;
+}

@@ -10,11 +10,13 @@ public:
     QPainterPath shape() const override;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
     void advance(int step) override;
+    void setMouseX(int xMousePosition);
 
 private:
     int minX;
     int maxX;
     int fixY;
+    int xMousePosition;
 };
 
 #endif // CANNON_H

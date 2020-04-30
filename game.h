@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "animatable/cannon.h"
+#include "animatable/star.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,8 +17,10 @@ class Game : public QMainWindow {
 public:
     Game(int w, int h, QWidget* parent = nullptr);
     ~Game();
+    virtual bool eventFilter(QObject* object, QEvent* ev) override;
 
 private:
     Ui::Game* ui;
+    Cannon* cannon;
 };
 #endif // MAINWINDOW_H

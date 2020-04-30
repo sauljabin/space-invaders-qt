@@ -12,7 +12,7 @@ Cannon::Cannon(int w, int h)
     minX = -w / 2 + 40;
     maxX = w / 2 - 40;
     fixY = h / 2 - 23;
-    setX(minX);
+    setY(fixY);
 }
 
 QRectF Cannon::boundingRect() const
@@ -40,5 +40,17 @@ void Cannon::advance(int step)
 {
     if (!step)
         return;
-    setPos(x() + 1, fixY);
+
+    if (xMousePosition <= minX) {
+        setX(minX);
+    } else if (xMousePosition >= maxX) {
+        setX(maxX);
+    } else {
+        setX(xMousePosition);
+    }
+}
+
+void Cannon::setMouseX(int xMousePosition)
+{
+    this->xMousePosition = xMousePosition - maxX - 35;
 }
