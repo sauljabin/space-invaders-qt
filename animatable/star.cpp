@@ -29,7 +29,6 @@ QRectF Star::boundingRect() const
 QPainterPath Star::shape() const
 {
     QPainterPath path;
-    path.addRect(BODY);
     return path;
 }
 

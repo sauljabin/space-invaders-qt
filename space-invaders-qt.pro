@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     animatable/bullet.cpp \
     animatable/cannon.cpp \
+    animatable/invader.cpp \
     animatable/star.cpp \
     game.cpp \
     main.cpp
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     animatable/bullet.h \
     animatable/cannon.h \
+    animatable/invader.h \
     animatable/star.h \
     game.h
 

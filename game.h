@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "animatable/cannon.h"
+#include "animatable/invader.h"
 #include "animatable/star.h"
 #include <QMainWindow>
 

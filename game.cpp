@@ -22,6 +22,9 @@ Game::Game(int w, int h, QWidget* parent)
     cannon = new Cannon();
     scene->addItem(cannon);
 
+    Invader* invader = new Invader(-100, -100);
+    scene->addItem(invader);
+
     QGraphicsView* view = new QGraphicsView(scene, this);
     view->setRenderHint(QPainter::Antialiasing);
     view->setBackgroundBrush(Qt::black);

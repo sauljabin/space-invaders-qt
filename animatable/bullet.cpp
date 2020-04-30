@@ -3,6 +3,7 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
+#include <animatable/invader.h>
 
 const QRectF BODY = QRectF(-2, -5, 4, 10);
 const int SPEED = 15;
@@ -38,6 +39,20 @@ void Bullet::advance(int step)
         return;
 
     setY(y() - SPEED);
+
+    QList<QGraphicsItem*> collitions = this->collidingItems(Qt::IntersectsItemShape);
+    foreach (QGraphicsItem* item, collitions) {
+        if (item == this)
+            continue;
+
+        Invader* invader = (Invader*)item;
+        invader->destroy();
+
+        scene()->removeItem(this);
+
+        delete this;
+        return;
+    }
 
     if (y() <= -scene()->height() / 2) {
         scene()->removeItem(this);
