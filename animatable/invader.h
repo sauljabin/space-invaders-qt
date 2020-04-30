@@ -15,7 +15,8 @@ public:
 
 private:
     QColor color;
-    int frame;
+    int colorController;
+    int advanceController;
     bool destroyable;
 };
 

@@ -32,9 +32,9 @@ void Invader::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*
     painter->drawEllipse(-25, -10, 50, 20);
     painter->drawEllipse(-15, -20, 30, 30);
 
-    if (frame < 10) {
+    if (colorController < 10) {
         painter->setBrush(Qt::red);
-    } else if (frame < 20) {
+    } else if (colorController < 20) {
         painter->setBrush(Qt::blue);
     } else {
         painter->setBrush(Qt::cyan);
@@ -47,12 +47,28 @@ void Invader::advance(int step)
 {
     if (!step)
         return;
-    frame++;
-    if (frame >= 30) {
-        frame = 0;
+
+    colorController++;
+    advanceController++;
+
+    if (colorController >= 30) {
+        colorController = 0;
     }
 
-    setX(x() + 1);
+    if (advanceController >= 400) {
+        advanceController = 0;
+    }
+
+    if (advanceController < 100) {
+
+        setX(x() + 1);
+    } else if (advanceController < 200) {
+        setY(y() + 1);
+    } else if (advanceController < 300) {
+        setX(x() - 1);
+    } else if (advanceController < 400) {
+        setY(y() + 1);
+    }
 
     if (destroyable) {
         scene()->removeItem(this);

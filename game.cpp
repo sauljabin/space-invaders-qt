@@ -22,8 +22,15 @@ Game::Game(int w, int h, QWidget* parent)
     cannon = new Cannon();
     scene->addItem(cannon);
 
-    Invader* invader = new Invader(-100, -100);
-    scene->addItem(invader);
+    int initX = -300;
+    int initY = -300;
+
+    for (int i = 1; i <= 8; i++) {
+        for (int j = 1; j <= 3; j++) {
+            Invader* invader = new Invader(initX + 60 * i, initY + 60 * j);
+            scene->addItem(invader);
+        }
+    }
 
     QGraphicsView* view = new QGraphicsView(scene, this);
     view->setRenderHint(QPainter::Antialiasing);
