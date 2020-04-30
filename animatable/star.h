@@ -5,7 +5,7 @@
 
 class Star : public QGraphicsItem {
 public:
-    Star(int x, int y);
+    Star(int w, int h);
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
     QRectF boundingRect() const override;
 };
