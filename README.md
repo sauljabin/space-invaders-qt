@@ -18,3 +18,7 @@ Formatear c++:
 ```
 $ clang-format -i -style=WebKit **/*.cpp **/*.h
 ```
+
+### Screenshot
+
+![](screenshot/space-invaders.png)
