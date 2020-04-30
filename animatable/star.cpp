@@ -9,8 +9,8 @@ const int ADJUST = -SIZE / 2;
 
 Star::Star(int w, int h)
 {
-    int x = QRandomGenerator::global()->bounded(-w / 2, w / 2);
-    int y = QRandomGenerator::global()->bounded(-h / 2, h / 2);
+    int x = QRandomGenerator::global()->bounded(-(w / 2 - ADJUST), w / 2 - ADJUST);
+    int y = QRandomGenerator::global()->bounded(-(h / 2 - ADJUST), h / 2 - ADJUST);
     setX(x);
     setY(y);
 }

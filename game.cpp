@@ -34,7 +34,7 @@ Game::Game(int w, int h, QWidget* parent)
     QTimer* timer = new QTimer;
     QObject::connect(timer, SIGNAL(timeout()), scene, SLOT(advance()));
     timer->start(1000 / 30);
-    qInfo("Inicia aplicación");
+    qInfo() << "Inicia aplicación";
 }
 
 Game::~Game() { delete ui; }
@@ -43,10 +43,9 @@ bool Game::eventFilter(QObject*, QEvent* ev)
 {
     if (ev->type() == QEvent::HoverMove) {
         QMouseEvent* mouseEvent = (QMouseEvent*)ev;
-        if (mouseEvent->type() == QMouseEvent::HoverMove) {
-            int mCursorX = mouseEvent->x();
-            cannon->setMouseX(mCursorX);
-        }
+        cannon->setMouseX(mouseEvent->x());
+    } else if (ev->type() == QEvent::MouseButtonPress) {
+        cannon->shoot();
     }
     return false;
 }

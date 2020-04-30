@@ -1,5 +1,7 @@
 #include "cannon.h"
 
+#include "animatable/bullet.h"
+#include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
 
@@ -54,3 +56,11 @@ void Cannon::setMouseX(int xMousePosition)
 {
     this->xMousePosition = xMousePosition - maxX - 35;
 }
+
+void Cannon::shoot()
+{
+    Bullet* bullet = new Bullet(x(), y() - 35);
+    scene()->addItem(bullet);
+}
+
+Cannon::~Cannon() {}

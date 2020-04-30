@@ -1,23 +1,16 @@
-#ifndef CANNON_H
-#define CANNON_H
+#ifndef BULLET_H
+#define BULLET_H
 
 #include <QGraphicsItem>
 
-class Cannon : public QGraphicsItem {
+class Bullet : public QGraphicsItem {
 public:
-    Cannon(int w, int h);
+    Bullet(int x, int initialY);
     QRectF boundingRect() const override;
     QPainterPath shape() const override;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
     void advance(int step) override;
-    void setMouseX(int xMousePosition);
-    void shoot();
-
-private:
-    int minX;
-    int maxX;
-    int fixY;
-    int xMousePosition;
+    ~Bullet();
 };
 
-#endif // CANNON_H
+#endif // BULLET_H

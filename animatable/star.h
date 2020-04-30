@@ -8,6 +8,7 @@ public:
     Star(int w, int h);
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
     QRectF boundingRect() const override;
+    ~Star();
 };
 
 #endif // SKY_H
