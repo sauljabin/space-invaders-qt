@@ -5,7 +5,7 @@
 
 class Cannon : public QGraphicsItem {
 public:
-    Cannon(int w, int h);
+    Cannon();
     QRectF boundingRect() const override;
     QPainterPath shape() const override;
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
@@ -15,10 +15,10 @@ public:
     ~Cannon();
 
 private:
-    int minX;
-    int maxX;
-    int fixY;
     int xMousePosition;
+    int getFixY();
+    int getMaxX();
+    int getMinX();
 };
 
 #endif // CANNON_H

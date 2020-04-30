@@ -19,7 +19,7 @@ Game::Game(int w, int h, QWidget* parent)
         scene->addItem(sky);
     }
 
-    cannon = new Cannon(w, h);
+    cannon = new Cannon();
     scene->addItem(cannon);
 
     QGraphicsView* view = new QGraphicsView(scene, this);

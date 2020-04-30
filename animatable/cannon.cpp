@@ -9,12 +9,8 @@ const QRectF BODY = QRectF(-30, -15, 60, 30);
 const QRectF CANNON = QRectF(-10, -30, 20, 20);
 const QRectF POINT = QRectF(-2, -35, 4, 10);
 
-Cannon::Cannon(int w, int h)
+Cannon::Cannon()
 {
-    minX = -w / 2 + 40;
-    maxX = w / 2 - 40;
-    fixY = h / 2 - 23;
-    setY(fixY);
 }
 
 QRectF Cannon::boundingRect() const
@@ -43,18 +39,27 @@ void Cannon::advance(int step)
     if (!step)
         return;
 
-    if (xMousePosition <= minX) {
-        setX(minX);
-    } else if (xMousePosition >= maxX) {
-        setX(maxX);
+    setY(getFixY());
+
+    if (xMousePosition <= getMinX()) {
+        setX(getMinX());
+    } else if (xMousePosition >= getMaxX()) {
+        setX(getMaxX());
     } else {
         setX(xMousePosition);
     }
 }
 
+int Cannon::getFixY()
+{
+    return scene()->height() / 2 - 23;
+}
+int Cannon::getMaxX() { return scene()->width() / 2 - 40; }
+int Cannon::getMinX() { return -scene()->width() / 2 + 40; }
+
 void Cannon::setMouseX(int xMousePosition)
 {
-    this->xMousePosition = xMousePosition - maxX - 35;
+    this->xMousePosition = xMousePosition - getMaxX() - 35;
 }
 
 void Cannon::shoot()
