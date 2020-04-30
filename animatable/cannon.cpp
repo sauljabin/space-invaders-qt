@@ -54,8 +54,14 @@ int Cannon::getFixY()
 {
     return scene()->height() / 2 - 23;
 }
-int Cannon::getMaxX() { return scene()->width() / 2 - 40; }
-int Cannon::getMinX() { return -scene()->width() / 2 + 40; }
+
+int Cannon::getMaxX() {
+    return scene()->width() / 2 - 40;
+}
+
+int Cannon::getMinX() {
+    return -scene()->width() / 2 + 40;
+}
 
 void Cannon::setMouseX(int xMousePosition)
 {
