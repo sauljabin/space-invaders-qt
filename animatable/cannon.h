@@ -12,6 +12,7 @@ public:
     void advance(int step) override;
     void setMouseX(int xMousePosition);
     void shoot();
+    ~Cannon();
 
 private:
     int minX;

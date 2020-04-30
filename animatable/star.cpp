@@ -1,27 +1,43 @@
 #include "star.h"
 
+#include <QGraphicsScene>
 #include <QPainter>
 #include <QRandomGenerator>
 #include <QStyleOption>
 
 const int SIZE = 4;
 const int ADJUST = -SIZE / 2;
+const QRectF BODY = QRectF(ADJUST, ADJUST, SIZE, SIZE);
 
-Star::Star(int w, int h)
+Star::Star()
 {
-    int x = QRandomGenerator::global()->bounded(-(w / 2 - ADJUST), w / 2 - ADJUST);
-    int y = QRandomGenerator::global()->bounded(-(h / 2 - ADJUST), h / 2 - ADJUST);
-    setX(x);
-    setY(y);
+    xPercent = QRandomGenerator::global()->bounded(-100, 100) / 100.;
+    yPercent = QRandomGenerator::global()->bounded(-100, 100) / 100.;
 }
 
 void Star::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*)
 {
     painter->setBrush(Qt::white);
-    painter->drawEllipse(ADJUST, ADJUST, SIZE, SIZE);
+    painter->drawEllipse(BODY);
 }
 
 QRectF Star::boundingRect() const
 {
-    return QRectF(ADJUST, ADJUST, SIZE, SIZE);
+    return BODY;
 }
+
+QPainterPath Star::shape() const
+{
+    QPainterPath path;
+    path.addRect(BODY);
+    return path;
+}
+
+void Star::advance(int step)
+{
+    if (!step)
+        return;
+    setPos(scene()->width() / 2 * xPercent, scene()->height() / 2 * yPercent);
+}
+
+Star::~Star() {}

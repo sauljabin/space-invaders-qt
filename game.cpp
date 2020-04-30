@@ -12,9 +12,10 @@ Game::Game(int w, int h, QWidget* parent)
     setFixedSize(w, h);
 
     QGraphicsScene* scene = new QGraphicsScene(this);
+    scene->setSceneRect(-w / 2, -h / 2, w, h);
 
     for (int i = 0; i < 120; i++) {
-        Star* sky = new Star(w, h);
+        Star* sky = new Star();
         scene->addItem(sky);
     }
 

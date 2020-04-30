@@ -1,6 +1,5 @@
 #include "bullet.h"
 
-#include <QDebug>
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QStyleOption>
@@ -46,4 +45,4 @@ void Bullet::advance(int step)
     }
 }
 
-Bullet::~Bullet() { qInfo() << "Bala llegó al final de la scene"; }
+Bullet::~Bullet() {}
